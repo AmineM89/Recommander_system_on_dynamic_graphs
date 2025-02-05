@@ -21,6 +21,20 @@ The Euler model consists of:
 - **Decoder** using dot product similarity.
 - **Loss Function** optimizing link prediction accuracy.
 
+## Implementation Details
+### Modifications to Euler Model
+Several modifications were made to the original Euler implementation to enhance its performance and flexibility:
+- **Custom Node2Vec Integration**: Added an option to either replace or concatenate embeddings for unseen nodes.
+- **Optimized RNN Architectures**: Replaced vanilla RNN with GRU/LSTM options for better temporal encoding.
+- **Hyperparameter Tuning**: Added configuration support for batch sizes, learning rates, and embedding dimensions.
+
+### Node Embeddings Strategy
+For handling new (unseen) nodes during link prediction, we experimented with two different strategies:
+1. **Replacement Strategy**: The embeddings of new nodes are entirely replaced by Node2Vec embeddings. This allows the model to leverage pre-trained structural representations of the graph.
+2. **Concatenation Strategy**: Instead of replacing, we concatenate the Node2Vec embeddings with the GCN-generated embeddings. This approach enriches the node representations by combining topological (Node2Vec) and learned graph structure features (GCN).
+
+Experimental results indicate that the concatenation strategy generally performs better, especially for datasets with a high proportion of new nodes (e.g., DBLP and FB). However, in some cases, replacing the embeddings yielded comparable results, particularly in link detection tasks.
+
 ## Experimental Setup
 - **Datasets**: Enron10, DBLP, FB.
 - **Metrics**: Average Precision (AP) & Area Under the Curve (AUC).
@@ -37,6 +51,3 @@ The Euler model consists of:
 - Extending experiments to other dynamic graph models.
 - Investigating additional augmentation techniques for cold start.
 - Exploring adversarial training to counteract noisy edges.
-
-## References
-See the [full paper](https://github.com/user-attachments/files/18648354/recommander.systems.pdf) for detailed methodology and experimental results.
