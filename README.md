@@ -51,3 +51,9 @@ Experimental results indicate that the concatenation strategy generally performs
 - Extending experiments to other dynamic graph models.
 - Investigating additional augmentation techniques for cold start.
 - Exploring adversarial training to counteract noisy edges.
+
+## References
+See the [full paper](https://github.com/user-attachments/files/18669799/recommander.systems.1.pdf)
+ for detailed methodology and experimental results.
+For more details on the original Euler model, please refer to the original paper:
+King, I. J., & Huang, H. H. (2023). Euler: Detecting network lateral movement via scalable temporal link prediction. ACM Transactions on Privacy and Security.
