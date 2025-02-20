@@ -35,6 +35,64 @@ For handling new (unseen) nodes during link prediction, we experimented with two
 
 Experimental results indicate that the concatenation strategy generally performs better, especially for datasets with a high proportion of new nodes (e.g., DBLP and FB). However, in some cases, replacing the embeddings yielded comparable results, particularly in link detection tasks.
 
+## Node2Vec Training
+The following code snippet demonstrates the training of Node2Vec embeddings for dynamic graphs:
+
+```python
+if embed_type is not 'default':
+    try:
+        embeds = torch.load(f"n2v_embeds_{dataset}.pth")
+    except:
+        start_idx = 0
+        embeds = []
+        for i in range(len(data.eis)):
+            ei = data.tr(start_idx + i)
+            num_nodes = data.x.size(0)
+
+            all_nodes = torch.arange(num_nodes)
+            connected_nodes = ei.view(1,-1).unique()
+            remaining_nodes = torch.tensor(list(set(all_nodes.numpy()) - set(connected_nodes.numpy())))
+            dummy_edges = remaining_nodes.repeat(2,1)
+            all_edges = torch.cat((ei,dummy_edges),dim=1)
+
+            model_n2v = Node2Vec(all_edges,
+                                embedding_dim=32,
+                                walk_length=50,
+                                context_size=25,
+                                walks_per_node=25,
+                                num_negative_samples=1,
+                                p=1.0,
+                                q=1.0,
+                                sparse=True)
+
+            loader = model_n2v.loader(batch_size=128, shuffle=True)
+            optimizer = torch.optim.SparseAdam(list(model_n2v.parameters()), lr=0.01)
+
+            def train():
+                model_n2v.train()
+                total_loss = 0
+                for pos_rw, neg_rw in loader:
+                    optimizer.zero_grad()
+                    loss = model_n2v.loss(pos_rw, neg_rw)
+                    loss.backward()
+                    optimizer.step()
+                    total_loss += loss.item()
+                return total_loss / len(loader)
+
+            for epoch in range(1, 151):
+                loss = train()
+                model_n2v.eval()
+                z = model_n2v()
+
+            model_n2v.eval()
+            z = model_n2v()
+            embeds.append(z)
+        embeds = torch.stack(embeds)
+        torch.save(embeds, f"n2v_embeds_{dataset}.pth")
+```
+
+This script trains Node2Vec embeddings for different graph timestamps and saves them for later use in the model.
+
 ## Experimental Setup
 - **Datasets**: Enron10, DBLP, FB.
 - **Metrics**: Average Precision (AP) & Area Under the Curve (AUC).
@@ -53,7 +111,6 @@ Experimental results indicate that the concatenation strategy generally performs
 - Exploring adversarial training to counteract noisy edges.
 
 ## References
-See the [full paper](https://github.com/user-attachments/files/18669799/recommander.systems.1.pdf)
- for detailed methodology and experimental results.
+See the [full paper](https://github.com/user-attachments/files/18669799/recommander.systems.1.pdf) for detailed methodology and experimental results.
 For more details on the original Euler model, please refer to the original paper:
 King, I. J., & Huang, H. H. (2023). Euler: Detecting network lateral movement via scalable temporal link prediction. ACM Transactions on Privacy and Security.
