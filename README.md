@@ -38,9 +38,9 @@ Our approach is based on the **Euler model**: a state-of-the-art hybrid architec
 ## 💻 Implementation Highlights
 
 ### Euler Model Enhancements
-- **Node2Vec** for new nodes (2 strategies: replace vs. concat)
-- Swappable RNN cells (`RNN`, `GRU`, `LSTM`)
-- Full config support: learning rate, batch size, embedding dims...
+- **Node2Vec** enrichementfor new nodes:
+    - replace
+    - concatenate
 
 ### Node Embedding Strategies
 | Strategy | Description |
