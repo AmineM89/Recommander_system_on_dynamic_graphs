@@ -1,27 +1,123 @@
-# Euler: Detecting Network Lateral Movement via Scalable Temporal Graph Link Prediction
+# 🔗 Recommender System Prediction with Dynamic Graph Representation Learning
 
-## Abstract
-Lateral movement is a key stage of system compromise used by advanced persistent threats. Detecting it is no simple task. When network host logs are abstracted into discrete temporal graphs, the problem can be reframed as anomalous edge detection in an evolving network. Research in modern deep graph learning techniques has produced many creative and complicated models for this task. However, as is the case in many machine learning fields, generality of models is of paramount importance to achieve good accuracy and scalability in training and inference.  
-	
-In this paper, we propose a formalized version of this approach in a framework we call Euler. It consists of a model-agnostic graph neural network stacked upon a model-agnostic sequence encoding layer such as a recurrent neural network. Models built according to the Euler framework can easily distribute their graph convolutional layers across multiple machines for large performance improvements. We demonstrate that Euler-based models are competitive, or better than many state-of-the-art approaches to anomalous link detection and prediction. As anomaly-based intrusion detection systems, Euler models can efficiently identify anomalous connections between entities with high precision and outperform other unsupervised techniques for anomalous lateral movement detection. 
+> **Link prediction in evolving graphs using GNNs and RNNs – enhanced with Node2Vec and robust to noisy data.**
 
-## Motivation
-Most temporal link prediction models which utilize graph neural networks do not scale well. Almost every model in this field uses a GNN combined with an RNN in such a way where the GNN input is dependant on the RNN output, as shown below: 
+---
 
-![](/img/sota.png)
+## 🧠 Abstract
+This project tackles link prediction in **dynamic graphs**, a crucial task in recommender systems and fraud detection. Unlike static graphs, dynamic graphs evolve over time, capturing real-world complexity more effectively.
 
-Our framework separates the two such that GNNs are free to run independantly. In this way, they can be distributed across multiple machines for large performance improvements
+We address two key challenges:
 
-![](/img/model.png)
+1. ❄️ **Cold Start Problem** – Predicting links for unseen nodes.
+2. 🧪 **Noise Robustness** – Measuring how random edge additions affect performance.
 
-By reframing lateral movement detection in a network as anomalous edge detection over a temporal graph, models following this technique can be used for intrusion detection systems. Below, we present a toy example of anomalous network activity that could only be captured if a network were abstracted in this manner: 
+Our approach is based on the **Euler model**: a state-of-the-art hybrid architecture combining Graph Neural Networks (GNNs) and Recurrent Neural Networks (RNNs) for topological and temporal learning.
 
-![](/img/example.png)
+---
 
-Here, C0 and C1 should only communicate with the shared drive after Alice and Bob have authenticated with them, respectively. However in time step 5, C1 connects to the shared drive without Bob's prior authorization. Pattern would be difficult to detect with other anomaly-based IDS's--all of which either do not consider the spatial relationship between Bob and the shared drive, or do not consider the temporal distinction between the edge (C1, SD) at times 1 and 5. 
+## 🚀 Features
+- ✅ Link prediction on **temporal** and **topological** patterns.
+- 🔍 **Cold Start node handling** via Node2Vec (replacement or concatenation).
+- 🔁 Noise injection (1–10%) to test robustness.
+- 📊 Evaluation on 3 datasets: `Enron10`, `DBLP`, and `Facebook`.
 
-This framework is scalable to large datasets, and is much faster than every other temporal link prediction method we tried
+---
 
-<img src="/img/scalability.png" width="375"/>) <img src="/img/runtimes.png" width="350"/>
+## 🧱 Model Architecture
 
-This allows us to run experiments on real-world enterprise data sets quickly, and with highly accurate results. We show that while Euler-based models have equivilant precision and accuracy on smaller data sets, on larger ones, the simplicity of the model allows it to outperform state-of-the-art temporal link predictors, as well as other graph-based approaches to anomaly-based IDS's. 
+| Component | Role |
+|----------|------|
+| `GCN` Encoder | Learns graph structure embeddings |
+| `RNN` Encoder | Captures temporal dynamics |
+| `Dot Product Decoder` | Predicts edge existence |
+| `Binary Cross Entropy` | Optimizes link prediction |
+
+---
+
+## ⚙️ Implementation Highlights
+
+### 🧩 Euler Model Enhancements
+- 🔀 **Node2Vec** for new nodes (2 strategies: replace vs. concat)
+- 🧠 Swappable RNN cells (`RNN`, `GRU`, `LSTM`)
+- ⚙️ Full config support: learning rate, batch size, embedding dims...
+
+### 🧠 Node Embedding Strategies
+| Strategy | Description | Best for |
+|---------|-------------|----------|
+| **Replacement** | Use Node2Vec only | Simpler graphs |
+| **Concatenation** | Combine Node2Vec + GCN | High-cold-start scenarios |
+
+🔎 *Concatenation yields better results on `DBLP` and `Facebook` datasets.*
+
+---
+
+## 🧪 Node2Vec Training Example
+
+```python
+model_n2v = Node2Vec(
+    edges, embedding_dim=32, walk_length=50,
+    context_size=25, walks_per_node=25, 
+    num_negative_samples=1, sparse=True
+)
+
+optimizer = torch.optim.SparseAdam(model_n2v.parameters(), lr=0.01)
+
+for epoch in range(150):
+    model_n2v.train()
+    for pos_rw, neg_rw in model_n2v.loader(batch_size=128):
+        optimizer.zero_grad()
+        loss = model_n2v.loss(pos_rw, neg_rw)
+        loss.backward()
+        optimizer.step()
+```
+
+Embeddings are saved per graph snapshot and reused during training.
+
+---
+
+## 🧪 Experimental Setup
+
+| Parameter | Value |
+|----------|-------|
+| 📁 Datasets | `Enron10`, `DBLP`, `Facebook` |
+| 📏 Metrics | `AUC`, `Average Precision (AP)` |
+| ⚖️ Baseline | Original Euler model |
+| 💥 Noise Levels | 0%, 1%, 5%, 10% |
+
+---
+
+## 📈 Key Results
+
+- 🎯 **Cold Start**: Node2Vec concatenation significantly improves performance for unseen nodes.
+- ⚠️ **Noise Sensitivity**: Most models degrade with noise, but DBLP shows resilience (less overfitting).
+- 📐 **Architecture Flexibility**: Swappable RNNs and embedding fusion yield consistent gains.
+
+---
+
+## 🔮 Future Work
+- 📚 Extend to other dynamic GNNs (e.g., TGN, DySAT).
+- 🧬 Integrate graph data augmentation techniques.
+- 🛡️ Explore adversarial training for robustness.
+
+---
+
+## 📄 Full Report & Visuals
+
+👉 **[📘 Read the Full Report (PDF)](https://github.com/user-attachments/files/18669799/recommander.systems.1.pdf)**
+
+![Preview](https://github.com/user-attachments/assets/9b65e15a-a895-468b-80b5-c6f50df0ad42)
+
+---
+
+## 📚 References
+
+> King, I. J., & Huang, H. H. (2023).  
+> *Euler: Detecting network lateral movement via scalable temporal link prediction*.  
+> _ACM Transactions on Privacy and Security_.
+
+---
+
+## 🧑‍💻 Author
+
+**Amine Mohabeddine** – [GitHub](https://github.com/AmineM89) | [LinkedIn](https://linkedin.com/in/AmineM89)
