@@ -43,7 +43,7 @@ Our approach is based on the **Euler model**: a state-of-the-art hybrid architec
 - Full config support: learning rate, batch size, embedding dims...
 
 ### Node Embedding Strategies
-| Strategy | Description | Best for |
+| Strategy | Description |
 |---------|-------------|
 | **Replacement** | Keep original embedding & use Node2Vec only for new nodes representations|
 | **Concatenation** | Combine original & Node2Vec embedding by concatenation |
