@@ -2,7 +2,7 @@
 
 > **Link prediction in evolving graphs using GNNs and RNNs – enhanced with Node2Vec and robust to noisy data.**
 
----
+
 
 ## Abstract
 This project tackles link prediction in **dynamic graphs**, a crucial task in recommender systems and fraud detection. Unlike static graphs, dynamic graphs evolve over time, capturing real-world complexity more effectively.
