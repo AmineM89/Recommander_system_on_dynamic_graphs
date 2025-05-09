@@ -4,27 +4,27 @@
 
 ---
 
-## 🧠 Abstract
+## Abstract
 This project tackles link prediction in **dynamic graphs**, a crucial task in recommender systems and fraud detection. Unlike static graphs, dynamic graphs evolve over time, capturing real-world complexity more effectively.
 
 We address two key challenges:
 
 1. ❄️ **Cold Start Problem** – Predicting links for unseen nodes.
-2. 🧪 **Noise Robustness** – Measuring how random edge additions affect performance.
+2. 🔨 **Noise Robustness** – Measuring how random edge additions affect performance.
 
 Our approach is based on the **Euler model**: a state-of-the-art hybrid architecture combining Graph Neural Networks (GNNs) and Recurrent Neural Networks (RNNs) for topological and temporal learning.
 
 ---
 
 ## 🚀 Features
-- ✅ Link prediction on **temporal** and **topological** patterns.
-- 🔍 **Cold Start node handling** via Node2Vec (replacement or concatenation).
-- 🔁 Noise injection (1–10%) to test robustness.
-- 📊 Evaluation on 3 datasets: `Enron10`, `DBLP`, and `Facebook`.
+- Link prediction on **temporal** and **topological** patterns.
+- **Cold Start node handling** via Node2Vec (replacement or concatenation).
+- Noise injection (1–10%) to test robustness.
+- Evaluation on 3 datasets: `Enron10`, `DBLP`, and `Facebook`.
 
 ---
 
-## 🧱 Model Architecture
+## 📐 Model Architecture
 
 | Component | Role |
 |----------|------|
@@ -35,24 +35,24 @@ Our approach is based on the **Euler model**: a state-of-the-art hybrid architec
 
 ---
 
-## ⚙️ Implementation Highlights
+## 💻 Implementation Highlights
 
-### 🧩 Euler Model Enhancements
-- 🔀 **Node2Vec** for new nodes (2 strategies: replace vs. concat)
-- 🧠 Swappable RNN cells (`RNN`, `GRU`, `LSTM`)
-- ⚙️ Full config support: learning rate, batch size, embedding dims...
+### Euler Model Enhancements
+- **Node2Vec** for new nodes (2 strategies: replace vs. concat)
+- Swappable RNN cells (`RNN`, `GRU`, `LSTM`)
+- Full config support: learning rate, batch size, embedding dims...
 
-### 🧠 Node Embedding Strategies
+### Node Embedding Strategies
 | Strategy | Description | Best for |
-|---------|-------------|----------|
-| **Replacement** | Use Node2Vec only | Simpler graphs |
-| **Concatenation** | Combine Node2Vec + GCN | High-cold-start scenarios |
+|---------|-------------|
+| **Replacement** | Keep original embedding & use Node2Vec only for new nodes representations|
+| **Concatenation** | Combine original & Node2Vec embedding by concatenation |
 
 🔎 *Concatenation yields better results on `DBLP` and `Facebook` datasets.*
 
 ---
 
-## 🧪 Node2Vec Training Example
+## 📄 Node2Vec Training Example
 
 ```python
 model_n2v = Node2Vec(
@@ -76,7 +76,7 @@ Embeddings are saved per graph snapshot and reused during training.
 
 ---
 
-## 🧪 Experimental Setup
+## ⚙️ Experimental Setup
 
 | Parameter | Value |
 |----------|-------|
@@ -89,16 +89,9 @@ Embeddings are saved per graph snapshot and reused during training.
 
 ## 📈 Key Results
 
-- 🎯 **Cold Start**: Node2Vec concatenation significantly improves performance for unseen nodes.
-- ⚠️ **Noise Sensitivity**: Most models degrade with noise, but DBLP shows resilience (less overfitting).
-- 📐 **Architecture Flexibility**: Swappable RNNs and embedding fusion yield consistent gains.
-
----
-
-## 🔮 Future Work
-- 📚 Extend to other dynamic GNNs (e.g., TGN, DySAT).
-- 🧬 Integrate graph data augmentation techniques.
-- 🛡️ Explore adversarial training for robustness.
+- **Cold Start**: Node2Vec concatenation significantly improves performance for unseen nodes.
+- **Noise Sensitivity**: Most models degrade with noise, but DBLP shows resilience (less overfitting).
+- **Architecture Flexibility**: Swappable RNNs and embedding fusion yield consistent gains.
 
 ---
 
