@@ -1,0 +1,456 @@
+enron10
+LR: 0.0200
+auc    95.646682
+ap     95.793824
+dtype: float64
+auc    0.229165
+ap     0.386346
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    94.405070
+ap     94.414326
+dtype: float64
+auc    0.376239
+ap     0.528547
+dtype: float64
+
+fb
+LR: 0.0200
+auc    91.432065
+ap     90.218590
+dtype: float64
+auc    0.318328
+ap     0.530697
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    95.605456
+ap     96.059523
+dtype: float64
+auc    0.159023
+ap     0.212454
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    88.660208
+ap     89.429345
+dtype: float64
+auc    0.523607
+ap     0.649334
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    95.497566
+ap     95.453765
+dtype: float64
+auc    0.535954
+ap     0.687626
+dtype: float64
+
+fb
+LR: 0.0200
+auc    89.967825
+ap     88.244767
+dtype: float64
+auc    0.645119
+ap     0.754103
+dtype: float64
+
+fb
+LR: 0.0200
+auc    91.205221
+ap     90.060280
+dtype: float64
+auc    0.256038
+ap     0.345188
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    89.328028
+ap     89.973456
+dtype: float64
+auc    1.496103
+ap     1.461755
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    88.009689
+ap     89.391633
+dtype: float64
+auc    1.160187
+ap     0.859567
+dtype: float64
+
+fb
+LR: 0.0200
+auc    91.479837
+ap     90.449771
+dtype: float64
+auc    0.382142
+ap     0.506493
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    90.098270
+ap     91.227906
+dtype: float64
+auc    1.256096
+ap     1.338103
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    95.264243
+ap     95.379194
+dtype: float64
+auc    0.317557
+ap     0.285386
+dtype: float64
+
+fb
+LR: 0.0200
+auc    90.130713
+ap     88.843606
+dtype: float64
+auc    0.160028
+ap     0.396551
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    90.832180
+ap     90.468541
+dtype: float64
+auc    0.881392
+ap     1.101137
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    95.72738
+ap     95.57032
+dtype: float64
+auc    0.206026
+ap     0.255717
+dtype: float64
+
+fb
+LR: 0.0200
+auc    90.238663
+ap     88.935512
+dtype: float64
+auc    0.414720
+ap     0.506344
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    89.553633
+ap     90.112154
+dtype: float64
+auc    1.054615
+ap     1.130367
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    96.838735
+ap     96.141901
+dtype: float64
+auc    0.510965
+ap     0.752696
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    94.940573
+ap     94.975865
+dtype: float64
+auc    0.364042
+ap     0.401492
+dtype: float64
+
+fb
+LR: 0.0200
+auc    90.749428
+ap     89.444423
+dtype: float64
+auc    0.288915
+ap     0.395068
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    89.892042
+ap     90.871209
+dtype: float64
+auc    0.551563
+ap     0.707697
+dtype: float64
+
+enron10
+LR: 0.0200
+pred-auc    92.284693
+pred-ap     92.809497
+new-auc     86.972652
+new-ap      86.837759
+dtype: float64
+pred-auc    0.597608
+pred-ap     0.465695
+new-auc     0.887522
+new-ap      0.886042
+dtype: float64
+
+fb
+LR: 0.0200
+pred-auc    89.737804
+pred-ap     88.551517
+new-auc     87.887922
+new-ap      86.164461
+dtype: float64
+pred-auc    0.342318
+pred-ap     0.548224
+new-auc     0.386068
+new-ap      0.643103
+dtype: float64
+
+dblp
+LR: 0.0200
+pred-auc    85.731895
+pred-ap     87.940855
+new-auc     77.152274
+new-ap      79.318249
+dtype: float64
+pred-auc    0.530576
+pred-ap     0.535698
+new-auc     0.786040
+new-ap      0.834321
+dtype: float64
+
+enron10
+LR: 0.0200
+pred-auc    93.075538
+pred-ap     93.528980
+new-auc     88.245895
+new-ap      88.217989
+dtype: float64
+pred-auc    0.425572
+pred-ap     0.416318
+new-auc     0.632642
+new-ap      0.840280
+dtype: float64
+
+fb
+LR: 0.0200
+pred-auc    88.013419
+pred-ap     86.581517
+new-auc     86.322934
+new-ap      84.309372
+dtype: float64
+pred-auc    0.487341
+pred-ap     0.602321
+new-auc     0.383100
+new-ap      0.520399
+dtype: float64
+
+dblp
+LR: 0.0200
+pred-auc    84.825904
+pred-ap     86.928245
+new-auc     76.396502
+new-ap      79.079397
+dtype: float64
+pred-auc    0.233559
+pred-ap     0.428319
+new-auc     0.643626
+new-ap      0.794317
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    95.009868
+ap     94.909009
+dtype: float64
+auc    0.412417
+ap     0.655919
+dtype: float64
+
+fb
+LR: 0.0200
+auc    90.505917
+ap     88.791223
+dtype: float64
+auc    0.579917
+ap     0.833439
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    89.352249
+ap     90.036147
+dtype: float64
+auc    0.458515
+ap     0.683105
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    95.98965
+ap     94.96862
+dtype: float64
+auc    0.272372
+ap     0.693564
+dtype: float64
+
+enron10
+LR: 0.0200
+auc    78.70839
+ap     83.65898
+dtype: float64
+auc    0.524130
+ap     0.884999
+dtype: float64
+
+fb
+LR: 0.0200
+auc    72.832687
+ap     75.537226
+dtype: float64
+auc    0.249583
+ap     0.390456
+dtype: float64
+
+dblp
+LR: 0.0200
+auc    71.210727
+ap     75.429311
+dtype: float64
+auc    1.080889
+ap     0.766586
+dtype: float64
+
+enron10
+LR: 0.0200
+pred-auc    83.552471
+pred-ap     76.191931
+new-auc     77.988149
+new-ap      72.366869
+dtype: float64
+pred-auc    0.497089
+pred-ap     0.663802
+new-auc     0.739794
+new-ap      0.755865
+dtype: float64
+
+fb
+LR: 0.0200
+pred-auc    72.760295
+pred-ap     63.487206
+new-auc     69.789860
+new-ap      61.307870
+dtype: float64
+pred-auc    0.396557
+pred-ap     0.326765
+new-auc     0.235563
+new-ap      0.190658
+dtype: float64
+
+enron10
+LR: 0.0200
+pred-auc    85.075428
+pred-ap     78.607597
+new-auc     78.932015
+new-ap      74.141445
+dtype: float64
+pred-auc    0.524330
+pred-ap     0.399063
+new-auc     0.670683
+new-ap      0.462317
+dtype: float64
+
+fb
+LR: 0.0200
+pred-auc    66.455595
+pred-ap     59.581211
+new-auc     64.276178
+new-ap      58.256864
+dtype: float64
+pred-auc    0.095903
+pred-ap     0.080788
+new-auc     0.198645
+new-ap      0.149936
+dtype: float64
+
+enron10
+LR: 0.0200
+pred-auc    66.121406
+pred-ap     66.949062
+new-auc     60.115398
+new-ap      61.385714
+dtype: float64
+pred-auc    0.282966
+pred-ap     0.330845
+new-auc     0.350059
+new-ap      0.426480
+dtype: float64
+
+fb
+LR: 0.0200
+pred-auc    56.359185
+pred-ap     54.574599
+new-auc     55.848467
+new-ap      54.410410
+dtype: float64
+pred-auc    0.186766
+pred-ap     0.140669
+new-auc     0.239045
+new-ap      0.200074
+dtype: float64
+
+dblp
+LR: 0.0200
+pred-auc    57.310532
+pred-ap     56.761809
+new-auc     54.110282
+new-ap      53.127422
+dtype: float64
+pred-auc    0.428785
+pred-ap     0.433187
+new-auc     0.363924
+new-ap      0.164242
+dtype: float64
+
+enron10
+LR: 0.0200
+pred-auc    93.186394
+pred-ap     93.637812
+new-auc     88.264914
+new-ap      88.005152
+dtype: float64
+pred-auc    0.610432
+pred-ap     0.709481
+new-auc     0.812520
+new-ap      0.819416
+dtype: float64
+
+fb
+LR: 0.0200
+pred-auc    88.804515
+pred-ap     87.222383
+new-auc     86.834431
+new-ap      84.698288
+dtype: float64
+pred-auc    0.467628
+pred-ap     0.679734
+new-auc     0.605229
+new-ap      0.975522
+dtype: float64
+
